@@ -6,9 +6,10 @@ import {
   Pressable,
   ScrollView,
 } from "react-native";
-import React from "react";
+import React, { useState } from "react";
 import { Ionicons } from "@expo/vector-icons";
 import { router } from "expo-router";
+import Confermation from "../Modules/confermation";
 
 const SettingItem = ({ icon, title, onPress }) => (
   <Pressable style={styles.item} onPress={onPress}>
@@ -19,8 +20,13 @@ const SettingItem = ({ icon, title, onPress }) => (
 
 
 const Settings = () => {
+
+  const [press,setpress]=useState(false);
+
   return (
-    <ScrollView style={styles.container}>
+<View>
+    <ScrollView style={[styles.container,press && {filter:'blur(2px)'}]}>
+        
       {/* PROFILE CARD */}
       <View style={styles.profileCard}>
         <View
@@ -48,7 +54,7 @@ const Settings = () => {
         <SettingItem
           icon="chatbubble-ellipses-outline"
           title="Feedback"
-          onPress={() => router.push("/feedback")}
+          onPress={() => router.push("../Usersetting/feedback")}
         />
 
         <SettingItem
@@ -65,11 +71,14 @@ const Settings = () => {
       </View>
 
       {/* LOGOUT */}
-      <Pressable style={styles.logoutBtn} onPress={() => router.replace("/login")}>
+      <Pressable style={styles.logoutBtn} onPress={() => setpress(true)}>
         <Ionicons name="log-out-outline" size={20} color="white" />
         <Text style={styles.logoutText}>Logout</Text>
       </Pressable>
     </ScrollView>
+      {  press && <Confermation isPressed={press} setIsPressed={setpress} />}
+
+    </View>
   );
 };
 
@@ -78,6 +87,8 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "#f5f7fb",
+    position:'relative',
+
   },
 
   profileCard: {
