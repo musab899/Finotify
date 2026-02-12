@@ -6,13 +6,14 @@ import {
   View,
   Image,
 } from "react-native";
-import React from "react";
+import React, { useEffect } from "react";
 import { useState } from "react";
 import Upper from "../Modules/Upper";
 import { Ionicons } from "@expo/vector-icons";
 import { MaterialIcons } from "@expo/vector-icons";
 import { router } from "expo-router";
 import Danger from "../Modules/danger";
+import axios from "axios";
 
 const Singup = () => {
   const [press, setpress] = useState(0);
@@ -28,6 +29,22 @@ const Singup = () => {
   const [pass,setpass]=useState('')
 
   const [error,seterror]=useState('')
+
+  const senddata=()=>{ {
+    axios.post('http://localhost:3000/users/useradd',{
+      username:username,
+      mobileno:mobile,
+      email:email,
+      password:pass
+    }).then((res)=>{
+      console.log(res.data)
+      router.push('../desbord/desbord')
+    }).catch((error)=>{
+      console.log(error)
+    }
+    )
+  }
+}
 
   const hideing = () => {
     setchnage(true);
@@ -270,7 +287,7 @@ const sub=()=>{
           ]}
           onPressIn={() => setpress(6)}
           onPressOut={() => setpress(0)}
-          onPress={()=>sub()}
+          onPress={()=>senddata()}
         >
           <Text
             style={{

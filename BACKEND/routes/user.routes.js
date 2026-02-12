@@ -1,24 +1,37 @@
-const express=require('express')
-const router=express()
-const userAdd=require('../model/user.model');
+import express from 'express'
+const router=express.Router();
 
-let data={
-    name:'musab',
-    mobileno:9512971905,
-    email:'musab234@gmail.com',
-    password:'abc@123'
-}
 
-router.get('/useradd',async(req,res)=>{
-    const useradd= await userAdd.create({
-        username:data.name,
-        mobileno:data.mobileno,
-        email:data.email,
-        password:data.password
+import userAdd from '../model/user.model.js'
+
+import byrcpt from 'bcryptjs';
+import jwt from 'jsonwebtoken';
+import dotenv from 'dotenv'
+dotenv.config()
+
+
+
+
+
+router.post('/useradd',async (req,res)=>{
+    const {username,mobileno,email,password}=req.body
+    const hashpass=await byrcpt.hash(password,10)    
+    let useradd= await userAdd.create({
+        username,
+        mobileno,
+        email,
+        password:hashpass
+    }).then((useradd)=>{
+        console.log('user register successfully')
+        let token=jwt.sign({id:useradd._id,email:useradd.email},process.env.JWT_SECRET)
+        
+        console.log(token)
+        
+    }).catch((error)=>{
+        console.log(error)
     })
+    res.json(useradd)
 
-
-    console.log(useradd)
 })
 
-module.exports=router
+export default router;
