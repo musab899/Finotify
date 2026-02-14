@@ -7,7 +7,7 @@ const Upper = () => {
     <View>
       {/* TOP HEADER */}
       <View style={styles.upper}>
-        <Text style={styles.title}>Overall Balance</Text>
+        <Text style={styles.title}>Over all Balance</Text>
 
         <View style={styles.userRow}>
           <Ionicons name="person" size={20} color="white" />
