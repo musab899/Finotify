@@ -65,7 +65,7 @@ const Items = ({ datas }) => {
             {/* Description */}
             <Text style={styles.desc}>{i.des}</Text>
 
-            {/* Date */}
+            
             <Text style={styles.date}>
               {date.getDate()}{" "}
               {date.toLocaleString("default", { month: "short" })},{" "}

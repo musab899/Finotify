@@ -9,6 +9,7 @@ import {
 } from "react-native";
 import { Ionicons, MaterialIcons } from "@expo/vector-icons";
 import { router } from "expo-router";
+import axios from 'axios'
 
 const Login = () => {
   const [activeInput, setActiveInput] = useState(0);
@@ -20,20 +21,16 @@ const Login = () => {
 
   const correctPassword = "123456";
 
-  const submit = () => {
-    if (!mobile || !password) {
-      setError("Please enter valid details");
-      clearError();
-      return;
-    }
-
-    if (password !== correctPassword) {
-      setError("Wrong password");
-      clearError();
-      return;
-    }
-
-    router.push("/singup");
+  const submit = async () => {
+    let datas=await axios.post('http://localhost:3000/users/login',
+      {mobileno:mobile,
+        password:password
+      }).then((res)=>{
+        console.log(res.data)
+        router.push('../desbord/desbord')
+      }).catch((error)=>{
+        console.log(error)
+      })
   };
 
   const clearError = () => {

@@ -37,7 +37,8 @@ const Singup = () => {
       email:email,
       password:pass
     }).then((res)=>{
-      console.log(res.data)
+      console.log(res.massage)
+      
       router.push('../desbord/desbord')
     }).catch((error)=>{
       console.log(error)
