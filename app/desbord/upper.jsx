@@ -1,8 +1,12 @@
 import React from "react";
 import { StyleSheet, Text, View, TextInput } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
+import { useLocalSearchParams } from "expo-router";
 
 const Upper = () => {
+  /*const {data}=useLocalSearchParams()
+  const user=JSON.parse(data)
+  console.log(user.username)*/
   return (
     <View>
       {/* TOP HEADER */}
@@ -12,7 +16,7 @@ const Upper = () => {
         <View style={styles.userRow}>
           <Ionicons name="person" size={20} color="white" />
 
-          <Text style={styles.username}>Hello, mominmusab123</Text>
+          <Text style={styles.username}>welcome </Text>
 
           <View style={styles.notificationBox}>
             <Ionicons name="notifications" size={26} color="white" />

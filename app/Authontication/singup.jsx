@@ -27,24 +27,30 @@ const Singup = () => {
   const [email,setemail]=useState('')
   const [paas2,setpass2]=useState('')
   const [pass,setpass]=useState('')
-
+  const [data,setdata]=useState([])
   const [error,seterror]=useState('')
 
-  const senddata=()=>{ {
+  const senddata=()=>{ /*{
     axios.post('http://localhost:3000/users/useradd',{
       username:username,
       mobileno:mobile,
       email:email,
       password:pass
     }).then((res)=>{
-      console.log(res.massage)
+      console.log("find",res.data.datas.username)
+     
+     
       
-      router.push('../desbord/desbord')
+      router.push({pathname:'../desbord/desbord',params:{
+        data:JSON.stringify(res.data.datas)
+      }})
     }).catch((error)=>{
       console.log(error)
     }
     )
-  }
+   
+  }*/
+ router.push('../desbord/desbord')
 }
 
   const hideing = () => {
@@ -88,7 +94,7 @@ const sub=()=>{
   // else{
   //   router.push('/desbord')
   // }
-  router.push('../desbord/desbord')
+  // router.push('../desbord/desbord')
 }
 
   return (

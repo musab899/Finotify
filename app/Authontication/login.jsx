@@ -22,12 +22,15 @@ const Login = () => {
   const correctPassword = "123456";
 
   const submit = async () => {
-    let datas=await axios.post('http://localhost:3000/users/login',
+    await axios.post('http://localhost:3000/users/login',
       {mobileno:mobile,
         password:password
       }).then((res)=>{
         console.log(res.data)
-        router.push('../desbord/desbord')
+        router.push({pathname:'../desbord/desbord',
+          params:{
+            data:JSON.stringify(res.data.data)
+        }})
       }).catch((error)=>{
         console.log(error)
       })

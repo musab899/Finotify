@@ -23,8 +23,9 @@ router.post('/useradd',async (req,res)=>{
         password:hashpass
     }).then((useradd)=>{
         console.log('user register successfully')
-        res.status(200).json({massage:'user register successfulyy',datas:useradd})
         let token=jwt.sign({id:useradd._id,email:useradd.email},process.env.JWT_SECRET)
+                res.status(200).json({massage:'user register successfulyy',datas:useradd,token:token})
+
         
         console.log(token)
         
@@ -50,10 +51,11 @@ router.post('/login',async (req,res)=>{
     if(!checklogin)
     {
         console.log('password or mobileno wrong')
+        return
     }
 
     res.status(200)
-    res.json({message:'login successfully'})
+    res.json({message:'login successfully',data:check})
 
 })
 

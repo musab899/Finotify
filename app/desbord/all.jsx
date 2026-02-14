@@ -12,13 +12,23 @@ const Items = ({ datas }) => {
         const isIncome = i.it === "income";
 
         return (
-          <View
-            key={index}
+          <Pressable
+                     onPress={()=>router.push({pathname:'../desbord/adddata',
+                      params:{
+                      cat:i.cat,
+                      amm:i.amm,
+                      des:i.des,
+                      it:i.it
+                      }})
+
+                    }   key={index}
             style={[
               styles.card,
               { borderLeftColor: isIncome ? "#2ecc71" : "#e74c3c" },
-            ]}
-          >
+            ]}>
+                  
+          
+          
             {/* Top Row */}
             <View style={styles.row}>
               <Text style={styles.category}>{i.cat}</Text>
@@ -37,21 +47,7 @@ const Items = ({ datas }) => {
                 >
                   ₹ {i.amm}
                 </Text>
-                    <Pressable style={{marginLeft:10}}
-                     onPress={()=>router.push({pathname:'../desbord/adddata',
-                      params:{
-                      cat:i.cat,
-                      amm:i.amm,
-                      des:i.des,
-                      it:i.it
-                      }})
-                    }>
-                  <Ionicons
-                    name="pencil"
-                    size={20}
-                    color="#464646af"
-                  />
-                </Pressable>
+                    
                   <Pressable style={{marginLeft:10}}>
                   <Ionicons
                     name="trash-outline"
@@ -71,7 +67,7 @@ const Items = ({ datas }) => {
               {date.toLocaleString("default", { month: "short" })},{" "}
               {date.getFullYear()}
             </Text>
-          </View>
+          </Pressable>
         );
       })}
     </ScrollView>
