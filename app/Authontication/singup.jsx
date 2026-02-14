@@ -22,31 +22,32 @@ const Singup = () => {
   const [hide2, sethide2] = useState(11);
   const [chnage2, setchnage2] = useState(false);
 
-  const [username,setusername]=useState('')
-  const [mobile,setmobile]=useState('')
-  const [email,setemail]=useState('')
-  const [paas2,setpass2]=useState('')
-  const [pass,setpass]=useState('')
+  const [username, setusername] = useState('')
+  const [mobile, setmobile] = useState('')
+  const [email, setemail] = useState('')
+  const [paas2, setpass2] = useState('')
+  const [pass, setpass] = useState('')
 
-  const [error,seterror]=useState('')
+  const [error, seterror] = useState('')
 
-  const senddata=()=>{ {
-    axios.post('http://localhost:3000/users/useradd',{
-      username:username,
-      mobileno:mobile,
-      email:email,
-      password:pass
-    }).then((res)=>{
-      console.log(res.massage)
-      
-      router.push('../desbord/desbord')
-    }).catch((error)=>{
-      console.log(error)
-    }
-    )
-  }
-}
+  // const senddata = () => {
+  //   {
+  //     axios.post('http://localhost:3000/users/useradd', {
+  //       username: username,
+  //       mobileno: mobile,
+  //       email: email,
+  //       password: pass
+  //     }).then((res) => {
+  //       console.log(res.massage)
 
+  //       router.push('../desbord/desbord')
+  //     }).catch((error) => {
+  //       console.log(error)
+  //     }
+  //     )
+  //   }
+  // }
+  router.push('../desbord/desbord')
   const hideing = () => {
     setchnage(true);
     sethide(9);
@@ -67,38 +68,36 @@ const Singup = () => {
     sethide2(12);
   };
 
-const sub=()=>{
-  // if(username=='' || mobile=='' || email=='' || paas2=='' || pass=='')
-  // {
-    
-  //     seterror('please enter a valid detail')  
-    
-  //     setTimeout(() => {
-  //       seterror('')
-  //     }, 2000)
-  // }
-  
-  // else if(pass!=paas2)
-  // {
-  //   seterror('no match password')
-  //   setTimeout(() => {
-  //       seterror('')
-  //     }, 2000)
-  // }
-  // else{
-  //   router.push('/desbord')
-  // }
-  router.push('../desbord/desbord')
-}
+  const sub = () => {
+    if (username == '' || mobile == '' || email == '' || paas2 == '' || pass == '') {
+
+      seterror('please enter a valid detail')
+
+      setTimeout(() => {
+        seterror('')
+      }, 2000)
+    }
+
+    else if (pass != paas2) {
+      seterror('no match password')
+      setTimeout(() => {
+        seterror('')
+      }, 2000)
+    }
+    else {
+      router.push('/desbord')
+    }
+    router.push('../desbord/desbord')
+  }
 
   return (
-    <View style={{backgroundColor:'white'}}>
+    <View style={{ backgroundColor: 'white' }}>
       {/* {/*  */}
       <View>
         <Image style={styles.logo} source={require("../../assets/singup.png")} />
-      </View> 
+      </View>
 
-      {error?<Danger errror={error} />:''}
+      {error ? <Danger errror={error} /> : ''}
       <View style={{ paddingTop: 20 }}>
         <Text
           style={{
@@ -106,59 +105,59 @@ const sub=()=>{
             fontSize: 20,
             textTransform: "capitalize",
             fontFamily: "",
-            marginTop:-20
+            marginTop: -20
           }}
         >
           register here
         </Text>
       </View>
       <View style={styles.input}>
-        <View style={{display:'flex',flexDirection:'row',width:'80%',justifyContent:'center',alignItems:'center',borderRadius:14,elevation:3,backgroundColor:'white'}}>
+        <View style={{ display: 'flex', flexDirection: 'row', width: '80%', justifyContent: 'center', alignItems: 'center', borderRadius: 14, elevation: 3, backgroundColor: 'white' }}>
           <Ionicons name={'person'} size={24} color={'#0a63bcd5'} style={{}}></Ionicons>
-        <TextInput
-          style={[styles.inp, press == 1 && { opacity: 1 }]}
-          onFocus={() => setpress(1)}
-          onBlur={() => setpress(0)}
-          placeholder=" Username"
-          
-          value={username}
-          onChangeText={setusername}
-        ></TextInput>
-        </View>
-         <View style={{display:'flex',flexDirection:'row',width:'80%',justifyContent:'center',alignItems:'center',borderRadius:14,marginTop:10,elevation:3,backgroundColor:'white'}}>
-          <Ionicons name={'call'} size={24} color={'#0a63bcd5'} style={{}}></Ionicons>
-        <TextInput
-          style={[styles.inp, press == 2 && { opacity: 1 }]}
-          onFocus={() => setpress(2)}
-          onBlur={() => setpress(0)}
-          placeholder=" Mobile No"
-          value={mobile}
-          onChangeText={setmobile}
-        ></TextInput>
-        </View>
-           <View style={{display:'flex',flexDirection:'row',width:'80%',justifyContent:'center',alignItems:'center',borderRadius:14,marginTop:10,elevation:3,backgroundColor:'white'}}>
-          <MaterialIcons name={'email'} size={24} color={'#0a63bcd5'} style={{}}></MaterialIcons>
-        <TextInput
-          style={[styles.inp, press == 3 && { opacity: 1 }]}
-          onFocus={() => setpress(3)}
-          onBlur={() => setpress(0)}
-          placeholder="Email id"
-          value={email}
-          onChangeText={setemail}
-        ></TextInput>
-        </View>
-           <View style={{display:'flex',flexDirection:'row',width:'80%',justifyContent:'center',alignItems:'center',borderRadius:14,marginTop:10,elevation:3,backgroundColor:'white'}}>
-          <MaterialIcons name={'security'} size={24} color={'#0a63bcd5'} style={{}}></MaterialIcons>
-        <TextInput
-          style={[styles.inp, press == 4 && { opacity: 1 }]}
-          onFocus={() => setpress(4)}
-          onBlur={() => setpress(0)}
-          placeholder=" Password "
-          secureTextEntry={chnage}
-          value={paas2}
-          onChangeText={setpass2}
+          <TextInput
+            style={[styles.inp, press == 1 && { opacity: 1 }]}
+            onFocus={() => setpress(1)}
+            onBlur={() => setpress(0)}
+            placeholder=" Username"
 
-        ></TextInput>
+            value={username}
+            onChangeText={setusername}
+          ></TextInput>
+        </View>
+        <View style={{ display: 'flex', flexDirection: 'row', width: '80%', justifyContent: 'center', alignItems: 'center', borderRadius: 14, marginTop: 10, elevation: 3, backgroundColor: 'white' }}>
+          <Ionicons name={'call'} size={24} color={'#0a63bcd5'} style={{}}></Ionicons>
+          <TextInput
+            style={[styles.inp, press == 2 && { opacity: 1 }]}
+            onFocus={() => setpress(2)}
+            onBlur={() => setpress(0)}
+            placeholder=" Mobile No"
+            value={mobile}
+            onChangeText={setmobile}
+          ></TextInput>
+        </View>
+        <View style={{ display: 'flex', flexDirection: 'row', width: '80%', justifyContent: 'center', alignItems: 'center', borderRadius: 14, marginTop: 10, elevation: 3, backgroundColor: 'white' }}>
+          <MaterialIcons name={'email'} size={24} color={'#0a63bcd5'} style={{}}></MaterialIcons>
+          <TextInput
+            style={[styles.inp, press == 3 && { opacity: 1 }]}
+            onFocus={() => setpress(3)}
+            onBlur={() => setpress(0)}
+            placeholder="Email id"
+            value={email}
+            onChangeText={setemail}
+          ></TextInput>
+        </View>
+        <View style={{ display: 'flex', flexDirection: 'row', width: '80%', justifyContent: 'center', alignItems: 'center', borderRadius: 14, marginTop: 10, elevation: 3, backgroundColor: 'white' }}>
+          <MaterialIcons name={'security'} size={24} color={'#0a63bcd5'} style={{}}></MaterialIcons>
+          <TextInput
+            style={[styles.inp, press == 4 && { opacity: 1 }]}
+            onFocus={() => setpress(4)}
+            onBlur={() => setpress(0)}
+            placeholder=" Password "
+            secureTextEntry={chnage}
+            value={paas2}
+            onChangeText={setpass2}
+
+          ></TextInput>
         </View>
         <Pressable onPress={() => hideing()}>
           {hide == 10 && (
@@ -210,22 +209,22 @@ const sub=()=>{
             />
           )}
         </Pressable>
-   <View style={{display:'flex',flexDirection:'row',width:'80%',justifyContent:'center',alignItems:'center',borderRadius:14,marginTop:-10,elevation:3,backgroundColor:'white',height:'12%'}}>
+        <View style={{ display: 'flex', flexDirection: 'row', width: '80%', justifyContent: 'center', alignItems: 'center', borderRadius: 14, marginTop: -10, elevation: 3, backgroundColor: 'white', height: '12%' }}>
           <MaterialIcons name={'security'} size={24} color={'#0a63bcd5'} style={{}}></MaterialIcons>
-        <TextInput
-          style={[
-            styles.inp,
-            press == 5 && { opacity: 1 },
-            { paddingTop: 12 },
-            // { marginTop: -10 },
-          ]}
-          onFocus={() => setpress(5)}
-          onBlur={() => setpress(0)}
-          placeholder=" Confirom Password"
-          secureTextEntry={chnage2}
-          value={pass}
-          onChangeText={setpass}
-        ></TextInput>
+          <TextInput
+            style={[
+              styles.inp,
+              press == 5 && { opacity: 1 },
+              { paddingTop: 12 },
+              // { marginTop: -10 },
+            ]}
+            onFocus={() => setpress(5)}
+            onBlur={() => setpress(0)}
+            placeholder=" Confirom Password"
+            secureTextEntry={chnage2}
+            value={pass}
+            onChangeText={setpass}
+          ></TextInput>
         </View>
         <Pressable onPress={() => hideing2()}>
           {hide2 == 12 && (
@@ -288,7 +287,7 @@ const sub=()=>{
           ]}
           onPressIn={() => setpress(6)}
           onPressOut={() => setpress(0)}
-          onPress={()=>senddata()}
+          onPress={() => senddata()}
         >
           <Text
             style={{
@@ -326,18 +325,18 @@ const sub=()=>{
 export default Singup;
 
 const styles = StyleSheet.create({
-  logo:{
-    width:250,height:250,alignSelf:'center',mixBlendMode:'multiply',
+  logo: {
+    width: 250, height: 250, alignSelf: 'center', mixBlendMode: 'multiply',
   },
   inp: {
     width: 250,
     height: 50,
-    marginTop:0,
+    marginTop: 0,
     // borderRadius: 10,
     position: "relative",
     opacity: 1,
-  // elevation:2,
-  
+    // elevation:2,
+
   },
   input: {
     marginTop: 25,
@@ -370,7 +369,7 @@ const styles = StyleSheet.create({
   },
   footer: {
     backgroundColor: "#0a63bcd5",
-    height:68,
+    height: 68,
 
     alignItems: "center",
     justifyContent: "center",

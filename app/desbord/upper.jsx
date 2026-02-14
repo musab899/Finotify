@@ -12,7 +12,7 @@ const Upper = () => {
         <View style={styles.userRow}>
           <Ionicons name="person" size={20} color="white" />
 
-          <Text style={styles.username}>Hello, mominmusab123</Text>
+          <Text style={styles.username}>Hello, mominmusabkin</Text>
 
           <View style={styles.notificationBox}>
             <Ionicons name="notifications" size={26} color="white" />
