@@ -9,7 +9,6 @@ import {
 import React from "react";
 import { Ionicons } from "@expo/vector-icons";
 import { router } from "expo-router";
-// import {async} from '@react-native-async-storage/async-storage';
 
 const Mainpage = () => {
 

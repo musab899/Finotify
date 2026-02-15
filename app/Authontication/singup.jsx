@@ -14,6 +14,8 @@ import { MaterialIcons } from "@expo/vector-icons";
 import { router } from "expo-router";
 import Danger from "../Modules/danger";
 import axios from "axios";
+ import {AsyncStorage} from '@react-native-async-storage/async-storage';
+
 
 const Singup = () => {
   const [press, setpress] = useState(0);
@@ -36,8 +38,14 @@ const Singup = () => {
       mobileno:mobile,
       email:email,
       password:pass
-    }).then((res)=>{
-      console.log("find",res.data.datas.username)
+    }).then(async (res)=>{
+      // console.log("find",res.data.datas.username)
+        await AsyncStorage.setItem('userToken', res.data.token);
+
+    const token = await AsyncStorage.getItem('userToken');
+    console.log("Saved Token:", token);
+  
+
      
      
       
