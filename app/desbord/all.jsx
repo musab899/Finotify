@@ -1,6 +1,6 @@
 import { ScrollView, StyleSheet, Text, View,Pressable } from "react-native";
 import React from "react";
-import { Ionicons } from "@expo/vector-icons";
+import { Ionicons, MaterialCommunityIcons } from "@expo/vector-icons";
 import { router } from "expo-router";
 
 const Items = ({ datas }) => {
@@ -28,45 +28,30 @@ const Items = ({ datas }) => {
             ]}>
                   
           
-          
-            {/* Top Row */}
-            <View style={styles.row}>
-              <Text style={styles.category}>{i.cat}</Text>
-
-              <View style={styles.amountBox}>
-                <Ionicons
-                  name={isIncome ? "arrow-up-circle" : "arrow-down-circle"}
-                  size={18}
-                  color={isIncome ? "#2ecc71" : "#e74c3c"}
-                />
-                <Text
-                  style={[
-                    styles.amount,
-                    { color: isIncome ? "#2ecc71" : "#e74c3c" },
-                  ]}
-                >
-                  ₹ {i.amm}
-                </Text>
-                    
-                  <Pressable style={{marginLeft:10}}>
-                  <Ionicons
-                    name="trash-outline"
-                    size={20}
-                    color="#ff3232af"
-                  />
-                </Pressable>
-              </View>
-            </View>
-
-            {/* Description */}
-            <Text style={styles.desc}>{i.des}</Text>
-
-            
-            <Text style={styles.date}>
+            <View style={styles.first}>
+              <Text style={styles.firsttext}>S</Text>
+              </View> 
+              <View style={styles.second}>
+                <Text style={styles.secondtext}>{i.cat}</Text>
+                <Text style={styles.secondtext}>
               {date.getDate()}{" "}
               {date.toLocaleString("default", { month: "short" })},{" "}
               {date.getFullYear()}
-            </Text>
+              </Text>
+              <View>
+
+              </View>
+            </View>
+            <View style={styles.third}>
+              <View>
+                <Text>{i.amm}</Text>
+              </View>
+              <View>
+                <MaterialCommunityIcons name="note-edit"/>
+                <MaterialCommunityIcons name="trash-can"/>
+              </View>
+            </View>
+            
           </Pressable>
         );
       })}
@@ -78,51 +63,34 @@ export default Items;
 export const styles = StyleSheet.create({
   container: {
     paddingBottom: 20,
-    height:450
+    height:400
   },
 
   card: {
-    backgroundColor: "#fff",
-    marginHorizontal: 14,
-    marginVertical: 8,
-    padding: 14,
-    borderRadius: 14,
-    borderLeftWidth: 6,
-    elevation: 4,
+    backgroundColor: "#eb5f5f",
+    width:'95%',
+    alignSelf:'center',
+    display:'flex',
+    flexDirection:'row'
+    
   },
 
-  row: {
-    flexDirection: "row",
-    justifyContent: "space-between",
-    alignItems: "center",
+  first:{
+    backgroundColor:'grey',
+    width:50,
+    marginTop:5,
+    margin:10,
+    height:'40%',
+    borderRadius:100,
+    justifyContent:'center'
+    
   },
-
-  category: {
-    fontSize: 18,
-    fontWeight: "600",
-    textTransform: "capitalize",
-  },
-
-  amountBox: {
-    flexDirection: "row",
-    alignItems: "center",
-    gap: 6,
-  },
-
-  amount: {
-    fontSize: 18,
-    fontWeight: "700",
-  },
-
-  desc: {
-    marginTop: 6,
-    fontSize: 14,
-    color: "#666",
-  },
-
-  date: {
-    marginTop: 8,
-    fontSize: 12,
-    color: "#999",
-  },
+firsttext:{
+  textAlign:'center',
+  fontSize:30, 
+},
+second:{
+  backgroundColor:'yellow',
+  width:'60%'
+}
 });

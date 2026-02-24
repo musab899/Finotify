@@ -15,6 +15,7 @@ dotenv.config()
 
 router.post('/useradd',async (req,res)=>{
     const {username,mobileno,email,password}=req.body
+    
     const hashpass=await byrcpt.hash(password,10)    
     let useradd= await userAdd.create({
         username,

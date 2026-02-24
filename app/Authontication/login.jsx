@@ -22,7 +22,7 @@ const Login = () => {
   const correctPassword = "123456";
 
   const submit = async () => {
-    await axios.post('http://localhost:3000/users/login',
+    await axios.post('http://192.168.43.141:3000/users/login',
       {mobileno:mobile,
         password:password
       }).then((res)=>{

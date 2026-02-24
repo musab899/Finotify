@@ -33,7 +33,7 @@ const Singup = () => {
   const [error,seterror]=useState('')
 
   const senddata=()=>{ /*{
-    axios.post('http://localhost:3000/users/useradd',{
+    axios.post('http://192.168.43.141:3000/users/useradd',{
       username:username,
       mobileno:mobile,
       email:email,

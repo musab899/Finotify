@@ -14,42 +14,42 @@ const middel = () => {
        const datas=[
         {
             date:data,
-            cat:'food 🍴',
+            cat:'🍴 food',
             amm:200,
             des:'this fo food',
             it:'expenss'
         },
         {
             date:data,
-            cat:'salary 💸',
+            cat:'💸 salary',
             amm:2000,
             des:'this is salary',
             it:'income'
         },
           {
             date:data,
-            cat:'salary 💸',
+            cat:'💸 salary',
             amm:20000,
             des:'this is salary',
             it:'income'
         },
           {
             date:data,
-            cat:'other ',
+            cat:'O other',
             amm:20,
             des:'mene pese diye chai me',
             it:'expenss'
         },
            {
             date:data,
-            cat:'other ',
+            cat:'O other',
             amm:80,
             des:'dost ne pese diye',
             it:'income'
         },
         {
             date:data,
-            cat:'shopping 🛍️',
+            cat:'🛍️ shopping',
             amm:800,
             des:'hum kharidi karne guy',
             it:'expenss'
@@ -59,31 +59,31 @@ const middel = () => {
   return (
     <View>
       <View style={styles.allbtn}>
-        <Pressable style={[styles.btn,hover==1 && {backgroundColor:'#0a63bcd5'}]}  onPress={()=>{sethover(1),setset(1)}}>
+        <Pressable style={[styles.btn,hover==1 && {backgroundColor:'rgba(255, 255, 255, 0.83)'}]}  onPress={()=>{sethover(1),setset(1)}}>
           <Text
-            style={[styles.innerText,{width:50},hover==1 && {color:'white'}]}
+            style={[styles.innerText,hover==1 && {color:'black',fontWeight:400}]}
             
           >
             All
           </Text>
         </Pressable>
-        <Pressable style={[styles.btn,hover==2 && {backgroundColor:'#0a63bcd5'}]}  onPress={()=>{sethover(2),setset(2)}}>
+        <Pressable style={[styles.btn,hover==2 && {backgroundColor:'#ffffffd5'}]}  onPress={()=>{sethover(2),setset(2)}}>
           <Text
-            style={[styles.innerText,{width:90},hover==2 && {color:'white'}]}
+            style={[styles.innerText,hover==2 && {color:'black',fontWeight:400,elevation:10}]}
           >
             Income
           </Text>
         </Pressable>
-        <Pressable style={[styles.btn,hover==3 && {backgroundColor:'#0a63bcd5'}]}  onPress={()=>{sethover(3),setset(3)}}>
+        <Pressable style={[styles.btn,hover==3 && {backgroundColor:'#ffffffd5'}]}  onPress={()=>{sethover(3),setset(3)}}>
           <Text
-            style={[styles.innerText,{width:90},hover==3 && {color:'white'}]}
+            style={[styles.innerText,hover==3 && {color:'black',fontWeight:400}]}
           >
             Expenss
           </Text>
         </Pressable>
-        <Pressable style={[styles.btn,hover==4 && {backgroundColor:'#0a63bcd5'}]}  onPress={()=>{sethover(4),setset(4)}}>
+        <Pressable style={[styles.btn,hover==4 && {backgroundColor:'#ffffffd5'}]}  onPress={()=>{sethover(4),setset(4)}}>
           <Text
-            style={[styles.innerText,{width:60},hover==4 && {color:'white'}]}
+            style={[styles.innerText,hover==4 && {color:'black',fontWeight:400}]}
           >
            Total
           </Text> 
@@ -106,28 +106,37 @@ export default middel;
 
 const styles = StyleSheet.create({
   allbtn: {
-    height: 40,
-    marginTop: 0,
+    height:43,
+    marginBottom:15,
     display: "flex",
     flexDirection: "row",
     justifyContent: "space-around",
     alignItems: "center",
+    backgroundColor:'#bdbdbd4b',
+    width:'90%',
+    alignSelf:'center',
+    borderRadius:20,
+  
   },
   btn: {
     // borderWidth:1,
-    width: "auto",
-    borderRadius:5,
+  
+    borderRadius:15,
     // borderColor:'#ffffffd5',
-    // width:100,
-       elevation:5,
-              backgroundColor: "white",
+      width:'22%',
+        
+      
+              // backgroundColor: "white",
                height:32,
+               textAlign:'center',
+                //  marginLeft:10,
+                 
   },
   innerText:{
       textAlign: "center",
-              fontSize: 16,
+              fontSize: 14,
               fontFamily: "serif",
-              color: "#0a63bcd5",     
+              color: "#ccc4c4",     
              top:5
   }
 });

@@ -7,7 +7,7 @@ import Bottom from "./bottom";
 import Middel from "./middel";
 const desbord = () => {
   return (
-    <View>
+    <View style={{backgroundColor:'white'}}>
         <Upper/>
         <Middel/>
         <Bottom/>
