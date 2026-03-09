@@ -10,7 +10,7 @@ const bottom = () => {
          <View style={styles.footer}>
           <Pressable style={styles.foot} onPress={()=>router.push('../desbord')} >
             <MaterialIcons name="home-filled" size={26} color="white" />
-            <Text style={styles.fonts}>Home</Text>
+            {/* <Text style={styles.fonts}>Home</Text> */}
           </Pressable>
           
             <Pressable style={styles.foot} onPress={()=>router.push('../charts/headr')}>

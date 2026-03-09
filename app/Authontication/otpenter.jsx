@@ -3,39 +3,29 @@ import { StyleSheet, Text, View ,Image} from "react-native";
 import { useState } from "react";
 import { TextInput, Pressable } from "react-native";
 import Upper from "../Modules/Upper";
-import { router } from "expo-router";
+import { router, useLocalSearchParams } from "expo-router";
 import { MaterialIcons } from "@expo/vector-icons";
 import Danger from "../Modules/danger";
 import { CountdownCircleTimer } from 'react-native-countdown-circle-timer'
+import axios from "axios";
 const Otpenter = () => {
     const [otp,setotp]=useState('')
   const [press, setpress] = useState(0);
     const [yes,setyes]=useState('')
     const [error,seterror]=useState('')
   let [timer,settimer]=useState(false)
+  const email=useLocalSearchParams().email
 
 
-  const sub=()=>{
-    if(otp=="")
-    {
-        alert('please enter a valid detail ')  
-      setTimeout(() => {
-        seterror('')
-      }, 2000)
-    }
-    else if(otp!='12345')
-      {
-          alert('no match otp')  
-    
-      setTimeout(() => {
-        seterror('')
-      }, 2000)
-      }
-    
-    else{
-      router.push('./newpass')
-      settimer(true)
-    }
+  const sub=async()=>{
+    await axios.post('http://192.168.43.141:3000/users/otp',
+      {otp:otp}
+    ).then((res)=>{
+        console.log(res.data.message,res.data.data)
+        router.push({ pathname: './newpass/', params: { email: email } })
+    }).catch((error)=>{
+        console.log(error)
+    })
   }
 
   const timerfun=()=>{
@@ -97,7 +87,7 @@ const Otpenter = () => {
             Submit
           </Text>
         </Pressable>
-       <View style={styles.otpresend}  >
+       {/* <View style={styles.otpresend}  >
           {timer==true?
           <Pressable onPress={()=>timerfun()}>
           <Text style={{color:'#0a63bcff',fontSize:16,textTransform:'capitalize',width:100}}>resend otp</Text>
@@ -127,8 +117,10 @@ const Otpenter = () => {
    resend otp {Math.floor(remainingTime / 60)}m:{remainingTime % 60}s</Text></View>
 }
 </CountdownCircleTimer>}
-      </View>
-
+      </View> */}
+<Pressable  onPress={()=>router.push('./forgget')}>
+  <Text>OTP RESEND</Text>
+</Pressable>
     </View>
     </View>
   );

@@ -13,7 +13,10 @@ const userSchema=new mongoose.Schema({
     password:{
         type:String
     },
-    
+    since:{
+        type:Date,
+        default:Date.now
+    }
 })
 
 const userAdd=mongoose.model('userAdd',userSchema)

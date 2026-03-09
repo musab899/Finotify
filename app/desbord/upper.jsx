@@ -94,9 +94,10 @@ const styles = StyleSheet.create({
   },
   card:{
     backgroundColor:'#0362c0',
-    height:'90%',
+    height:'100%',
     width:'90%',
     borderRadius:10,
+    
     
   },
   total:{
@@ -139,7 +140,8 @@ const styles = StyleSheet.create({
     // boxShadow:'3px 3px 3px 1px #00000044',
     elevation:3,
     backgroundColor:'white',
-    marginBottom:10
+    marginBottom:10,
+    marginTop:10
   },
 
   searchInput: {

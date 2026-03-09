@@ -5,6 +5,7 @@ import Upper from "../Modules/Upper";
 import { router } from "expo-router";
 import { MaterialIcons } from "@expo/vector-icons";
 import Danger from "../Modules/danger";
+import axios from "axios";
 
 
 
@@ -14,18 +15,19 @@ const Forgget = () => {
     const [error,seterror]=useState('')
 
 
-  const sub=()=>{
-      if(email=="")
-      {
-        // seterror('please enter a valid detail')  
-        alert('please enter a valid detail ')    
-      setTimeout(() => {
-       seterror('')
-      }, 2000)
-      }
-      else{
-        router.push('./otpenter')
-      }
+  const sub=async()=>{
+        await axios.post('http://192.168.43.141:3000/users/email',
+          {email:email}
+        )
+        .then(async (res)=>{
+          console.log(JSON.stringify(res.data))
+          router.push({ pathname: './otpenter/', params: { email: email } })
+        })
+        .catch((error)=>{
+          console.log(error)
+        })
+          
+
   }
 
   return (

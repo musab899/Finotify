@@ -32,7 +32,7 @@ const Singup = () => {
   const [data,setdata]=useState([])
   const [error,seterror]=useState('')
 
-  const senddata=()=>{ /*{
+  const senddata=()=>{ {
     axios.post('http://192.168.43.141:3000/users/useradd',{
       username:username,
       mobileno:mobile,
@@ -40,13 +40,13 @@ const Singup = () => {
       password:pass
     }).then(async (res)=>{
       // console.log("find",res.data.datas.username)
-        await AsyncStorage.setItem('userToken', res.data.token);
+        /*await AsyncStorage.setItem('userToken', res.data.token);
 
     const token = await AsyncStorage.getItem('userToken');
-    console.log("Saved Token:", token);
+    console.log("Saved Token:", token);*/
   
 
-     
+     console.log('ho guy')
      
       
       router.push({pathname:'../desbord/desbord',params:{
@@ -57,8 +57,8 @@ const Singup = () => {
     }
     )
    
-  }*/
- router.push('../desbord/desbord')
+  }
+ /*router.push('../desbord/desbord')*/
 }
 
   const hideing = () => {
